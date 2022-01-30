@@ -4,14 +4,30 @@
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
-    <transition>
-      <p v-if="paraIsVisible">This is test</p>
+    <transition name="para">
+      <p v-if="paraIsVisible">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
     </transition>
 
     <button @click="togglePara()">Toggle Paragraph</button>
   </div>
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
-    <p>This is a test dialog!</p>
+  <base-modal @close="hideDialog" :open="dialogIsVisible">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.!
+    </p>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
   <div class="container">
@@ -71,7 +87,7 @@ button:active {
 }
 .animate {
   /* transform: translateX(-150px); */
-  animation: slide-fade 0.3s ease-out forwards;
+  animation: slide-scale 0.3s ease-out forwards;
 }
 .block {
   width: 8rem;
@@ -102,27 +118,27 @@ button:active {
     transform: translateX(-160px) scale(1);
   }
 }
-.v-enter-from {
+.para-enter-from {
   /* opacity: 0;
   transform: translateY(-30px); */
 }
-.v-enter-active {
+.para-enter-active {
   /* transition: all 0.3s ease-out; */
   animation: slide-scale 0.3s ease-out;
 }
-.v-enter-to {
+.para-enter-to {
   /* opacity: 1;
   transform: translateY(0); */
 }
-.v-leave-from {
+.para-leave-from {
   /* opacity: 1;
   transform: translateY(0);*/
 }
-.v-leave-active {
+.para-leave-active {
   /* transition: all 0.3s ease-in; */
   animation: slide-scale 0.3s ease-out;
 }
-.v-leave-to {
+.para-leave-to {
   /* opacity: 0;
   transform: translateY(30px); */
 }
