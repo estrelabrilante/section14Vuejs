@@ -15,7 +15,14 @@
         mollit anim id est laborum.
       </p>
     </transition>
-
+  </div>
+  <div class="container">
+    <transition name="fade-button" mode="out-in">
+      <button @click="showUser()" v-if="!usersAreVisible">Show users</button>
+      <button @click="hideUser()" v-else>Hide users</button>
+    </transition>
+  </div>
+  <div class="container">
     <button @click="togglePara()">Toggle Paragraph</button>
   </div>
   <base-modal @close="hideDialog" :open="dialogIsVisible">
@@ -42,9 +49,16 @@ export default {
       dialogIsVisible: false,
       animatedBlock: false,
       paraIsVisible: false,
+      usersAreVisible: false,
     };
   },
   methods: {
+    showUser() {
+      this.usersAreVisible = true;
+    },
+    hideUser() {
+      this.usersAreVisible = false;
+    },
     showDialog() {
       this.dialogIsVisible = true;
     },
@@ -141,5 +155,22 @@ button:active {
 .para-leave-to {
   /* opacity: 0;
   transform: translateY(30px); */
+}
+.fade-button-enter-from,
+.fade-button-leave-to {
+  opacity: 0;
+}
+.fade-button-enter-to,
+.fade-button-leave-from {
+  opacity: 1;
+}
+.fade-button-enter-active {
+  /* transition: all 0.3s ease-out; */
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-button-leave-active {
+  /* transition: all 0.3s ease-in; */
+  animation: slide-scale 0.3s ease-in;
 }
 </style>
