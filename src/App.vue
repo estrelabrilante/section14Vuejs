@@ -1,11 +1,14 @@
 <template>
   <div class="container">
+    <list-data></list-data>
+  </div>
+  <div class="container">
     <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
     <transition
-      name="para"
+      :css="false"
       @before-enter="beforeEnter"
       @enter="enter"
       @before-leave="beforeLeave"
@@ -53,7 +56,11 @@
 </template>
 
 <script>
+import ListData from './components/ListData.vue';
 export default {
+  components: {
+    ListData,
+  },
   data() {
     return {
       dialogIsVisible: false,
